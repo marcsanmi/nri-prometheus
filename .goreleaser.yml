@@ -3,7 +3,7 @@ builds:
     main: ./cmd/nri-prometheus/
     binary: nri-prometheus
     ldflags:
-      - -s -w -X github.com/newrelic/nri-prometheus/internal/integration.Version={{.Version}} #-X main.gitCommit={{.Commit}} -X main.buildDate={{.Date}}
+      - -s -w -X github.com/marcsanmi/nri-prometheus/internal/integration.Version={{.Version}} #-X main.gitCommit={{.Commit}} -X main.buildDate={{.Date}}
     env:
       - CGO_ENABLED=0
     goos:
@@ -24,7 +24,7 @@ builds:
     main: ./cmd/nri-prometheus/
     binary: nri-prometheus
     ldflags:
-      - -s -w -X github.com/newrelic/nri-prometheus/internal/integration.Version={{.Version}} #-X main.gitCommit={{.Commit}} -X main.buildDate={{.Date}}
+      - -s -w -X github.com/marcsanmi/nri-prometheus/internal/integration.Version={{.Version}} #-X main.gitCommit={{.Commit}} -X main.buildDate={{.Date}}
     goos:
       - windows
     goarch:
@@ -57,7 +57,7 @@ dockers:
     ids:
       - nri-prometheus-nix
     image_templates:
-      - 'newrelic/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-amd64'
+      - 'marcsanmi/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-amd64'
     use_buildx: true
     build_flag_templates:
     - "--platform=linux/amd64"
@@ -68,7 +68,7 @@ dockers:
     ids:
       - nri-prometheus-nix
     image_templates:
-      - 'newrelic/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm64'
+      - 'marcsanmi/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm64'
     use_buildx: true
     build_flag_templates:
     - "--platform=linux/arm64"
@@ -80,28 +80,28 @@ dockers:
     ids:
       - nri-prometheus-nix
     image_templates:
-      - 'newrelic/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm'
+      - 'marcsanmi/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm'
     use_buildx: true
     build_flag_templates:
     - "--platform=linux/arm"
     skip_push: false
 
 docker_manifests:
-  - name_template: newrelic/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}
+  - name_template: marcsanmi/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}
     image_templates:
-      - 'newrelic/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-amd64'
-      - 'newrelic/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm64'
-      - 'newrelic/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm'
-  - name_template: newrelic/nri-prometheus:{{ .Major }}.{{ .Minor }}{{ .Env.TAG_SUFFIX }}
+      - 'marcsanmi/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-amd64'
+      - 'marcsanmi/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm64'
+      - 'marcsanmi/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm'
+  - name_template: marcsanmi/nri-prometheus:{{ .Major }}.{{ .Minor }}{{ .Env.TAG_SUFFIX }}
     image_templates:
-      - 'newrelic/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-amd64'
-      - 'newrelic/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm64'
-      - 'newrelic/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm'
-  - name_template: newrelic/nri-prometheus:latest{{ .Env.TAG_SUFFIX }}
+      - 'marcsanmi/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-amd64'
+      - 'marcsanmi/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm64'
+      - 'marcsanmi/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm'
+  - name_template: marcsanmi/nri-prometheus:latest{{ .Env.TAG_SUFFIX }}
     image_templates:
-      - 'newrelic/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-amd64'
-      - 'newrelic/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm64'
-      - 'newrelic/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm'
+      - 'marcsanmi/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-amd64'
+      - 'marcsanmi/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm64'
+      - 'marcsanmi/nri-prometheus:{{ .Version }}{{ .Env.TAG_SUFFIX }}-arm'
 
 snapshot:
   name_template: "{{ .Tag }}-next"
